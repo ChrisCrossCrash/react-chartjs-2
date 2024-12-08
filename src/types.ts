@@ -51,7 +51,7 @@ export interface ChartProps<
    */
   redraw?: boolean;
   /**
-   * Key name to identificate dataset
+   * Key name to identify dataset
    * @default 'label'
    */
   datasetIdKey?: string;
