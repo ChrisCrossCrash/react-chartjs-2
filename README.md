@@ -25,6 +25,6 @@ import { Doughnut } from 'react-chartjs-3';
 
 ## License
 
-This repository is a fork of [reactchartjs/react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2), which is licensed under the [MIT License](LICENSE) and copyrighted by Jeremy Ayerst in 2020.
+This repository is a fork of [reactchartjs/react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2), which is licensed under the [MIT License](LICENSE) and copyrighted by Jeremy Ayerst in 2017.
 
 This fork continues to use the MIT License. Modifications to this repository were made starting with [this commit](https://github.com/ChrisCrossCrash/react-chartjs-2/commit/a136a537dc026ae9238e0d24fd1d649501651443) in 2024 by Christopher Kumm.
