@@ -1,9 +1,4 @@
-import type {
-  JSX,
-  CanvasHTMLAttributes,
-  MutableRefObject,
-  ReactNode,
-} from 'react';
+import type { JSX, CanvasHTMLAttributes, ForwardedRef, ReactNode } from 'react';
 import type {
   Chart,
   ChartType,
@@ -13,11 +8,6 @@ import type {
   Plugin,
   UpdateMode,
 } from 'chart.js';
-
-export type ForwardedRef<T> =
-  | ((instance: T | null) => void)
-  | MutableRefObject<T | null>
-  | null;
 
 export interface ChartProps<
   TType extends ChartType = ChartType,

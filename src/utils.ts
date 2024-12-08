@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react';
+import type { MouseEvent, ForwardedRef } from 'react';
 import type {
   ChartType,
   ChartData,
@@ -7,8 +7,6 @@ import type {
   ChartOptions,
   Chart,
 } from 'chart.js';
-
-import type { ForwardedRef } from './types.js';
 
 const defaultDatasetIdKey = 'label';
 

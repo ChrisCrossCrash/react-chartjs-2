@@ -1,8 +1,8 @@
-import { useEffect, useRef, forwardRef } from 'react';
+import { useEffect, useRef, forwardRef, ForwardedRef } from 'react';
 import { Chart as ChartJS } from 'chart.js';
 import type { ChartType, DefaultDataPoint } from 'chart.js';
 
-import type { ForwardedRef, ChartProps, BaseChartComponent } from './types.js';
+import type { ChartProps, BaseChartComponent } from './types.js';
 import {
   reforwardRef,
   cloneData,
