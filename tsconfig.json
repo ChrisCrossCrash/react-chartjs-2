@@ -1,38 +1,24 @@
 {
   "compilerOptions": {
-    /* Type Checking */
+    // The vast majority of browsers, as well as Node > 16, support ES2021.
+    "target": "ES2021",
+    "module": "ES2020",
+    "moduleResolution": "node",
     "strict": true,
-    "strictBindCallApply": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    /* Modules */
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "NodeNext",
-    "resolveJsonModule": true,
-    /* Emit */
+    "esModuleInterop": true,
+    "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
-    "importsNotUsedAsValues": "error",
-    "inlineSourceMap": true,
-    "outDir": "dist",
-    /* Interop Constraints */
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    /* Language and Environment */
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "target": "ESNext",
-    /* Completeness */
-    "skipLibCheck": true
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "noEmitOnError": true,
+    "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
