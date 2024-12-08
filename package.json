@@ -41,5 +41,11 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "format": "prettier --write \"src/**/*\""
-  }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
 }
