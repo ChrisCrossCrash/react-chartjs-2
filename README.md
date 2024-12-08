@@ -14,16 +14,12 @@ Supports Chart.js v4 and v3.
 
 [npm]: https://img.shields.io/npm/v/react-chartjs-2.svg
 [npm-url]: https://www.npmjs.com/package/react-chartjs-2
-
 [downloads]: https://img.shields.io/npm/dm/react-chartjs-2.svg
 [downloads-url]: https://www.npmjs.com/package/react-chartjs-2
-
 [build]: https://img.shields.io/github/actions/workflow/status/reactchartjs/react-chartjs-2/ci.yml?branch=master
 [build-url]: https://github.com/reactchartjs/react-chartjs-2/actions
-
 [coverage]: https://img.shields.io/codecov/c/github/reactchartjs/react-chartjs-2.svg
 [coverage-url]: https://app.codecov.io/gh/reactchartjs/react-chartjs-2
-
 [size]: https://img.shields.io/bundlephobia/minzip/react-chartjs-2
 [size-url]: https://bundlephobia.com/package/react-chartjs-2
 
@@ -75,5 +71,6 @@ Need an API to fetch data? Consider [Cube](https://cube.dev/?ref=eco-react-chart
 
 ## License
 
-[MIT Licensed](LICENSE)
-Copyright (c) 2020 Jeremy Ayerst
+This repository is a fork of [reactchartjs/react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2), which is licensed under the [MIT License](LICENSE) and copyrighted by Jeremy Ayerst in 2020.
+
+This fork continues to use the MIT License. Modifications to this repository were made starting with [this commit](https://github.com/ChrisCrossCrash/react-chartjs-2/commit/a136a537dc026ae9238e0d24fd1d649501651443) in 2024 by Christopher Kumm.
