@@ -12,11 +12,7 @@ import {
 } from 'chart.js';
 import type { ChartType, ChartComponentLike } from 'chart.js';
 
-import type {
-  ChartProps,
-  ChartJSOrUndefined,
-  TypedChartComponent,
-} from './types.js';
+import type { ChartProps, TypedChartComponent } from './types.js';
 import { Chart } from './chart.js';
 
 function createTypedChart<T extends ChartType>(
@@ -25,7 +21,7 @@ function createTypedChart<T extends ChartType>(
 ) {
   ChartJS.register(registerables);
 
-  return forwardRef<ChartJSOrUndefined<T>, Omit<ChartProps<T>, 'type'>>(
+  return forwardRef<ChartJS<T> | null, Omit<ChartProps<T>, 'type'>>(
     (props, ref) => <Chart {...props} ref={ref} type={type} />
   ) as TypedChartComponent<T>;
 }

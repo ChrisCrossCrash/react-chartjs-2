@@ -59,22 +59,13 @@ export interface ChartProps<
   updateMode?: UpdateMode;
 }
 
-/**
- * @todo Replace `undefined` with `null`
- */
-export type ChartJSOrUndefined<
-  TType extends ChartType = ChartType,
-  TData = DefaultDataPoint<TType>,
-  TLabel = unknown,
-> = Chart<TType, TData, TLabel> | undefined;
-
 export type BaseChartComponent = <
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown,
 >(
   props: ChartProps<TType, TData, TLabel> & {
-    ref?: ForwardedRef<ChartJSOrUndefined<TType, TData, TLabel>>;
+    ref?: ForwardedRef<Chart<TType, TData, TLabel> | null>;
   }
 ) => JSX.Element;
 
@@ -83,6 +74,6 @@ export type TypedChartComponent<TDefaultType extends ChartType> = <
   TLabel = unknown,
 >(
   props: Omit<ChartProps<TDefaultType, TData, TLabel>, 'type'> & {
-    ref?: ForwardedRef<ChartJSOrUndefined<TDefaultType, TData, TLabel>>;
+    ref?: ForwardedRef<Chart<TDefaultType, TData, TLabel> | null>;
   }
 ) => JSX.Element;
