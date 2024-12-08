@@ -31,14 +31,15 @@ function ChartComponent<
     fallbackContent,
     updateMode,
     ...canvasProps
-  } = props as ChartProps;
+  } = props;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartRef = useRef<ChartJS | null>();
+  const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null);
 
   const renderChart = () => {
     if (!canvasRef.current) return;
 
-    chartRef.current = new ChartJS(canvasRef.current, {
+    chartRef.current = new ChartJS<TType, TData, TLabel>(canvasRef.current, {
       type,
       data: cloneData(data, datasetIdKey),
       options: options && { ...options },
