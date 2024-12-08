@@ -1,4 +1,9 @@
-import type { CanvasHTMLAttributes, MutableRefObject, ReactNode } from 'react';
+import type {
+  JSX,
+  CanvasHTMLAttributes,
+  MutableRefObject,
+  ReactNode,
+} from 'react';
 import type {
   Chart,
   ChartType,
