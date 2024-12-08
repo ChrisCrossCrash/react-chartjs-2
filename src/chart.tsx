@@ -33,7 +33,7 @@ function ChartComponent<
     ...canvasProps
   } = props;
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null);
 
   const renderChart = () => {
