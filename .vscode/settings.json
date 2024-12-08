@@ -1,0 +1,10 @@
+{
+  // Prettier (esbenp.prettier-vscode)
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Prettier will wrap lines longer than 80 characters.
+  "editor.rulers": [
+    80
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+}
