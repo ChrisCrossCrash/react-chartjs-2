@@ -1,4 +1,4 @@
-# react-chartjs-2
+# react-chartjs-3
 
 React components for <a href="https://www.chartjs.org">Chart.js</a>, the most popular charting library.
 
@@ -6,8 +6,11 @@ React components for <a href="https://www.chartjs.org">Chart.js</a>, the most po
 
 Install this library with peer dependencies:
 
+> [!NOTE]
+> I haven't published this library to npm yet, so the installation command below will not work.
+
 ```
-npm i react-chartjs-2 chart.js
+npm i react-chartjs-3 chart.js
 ```
 
 We recommend using `chart.js@^4.0.0`.
@@ -15,7 +18,7 @@ We recommend using `chart.js@^4.0.0`.
 Then, import and use individual components:
 
 ```jsx
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-3';
 
 <Doughnut data={...} />
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "react-chartjs-2",
+  "name": "react-chartjs-3",
   "type": "module",
   "version": "5.2.0",
   "description": "React components for Chart.js",
@@ -8,16 +8,17 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactchartjs/react-chartjs-2.git"
+    "url": "git@github.com:ChrisCrossCrash/react-chartjs-3.git"
   },
   "bugs": {
-    "url": "https://github.com/reactchartjs/react-chartjs-2/issues"
+    "url": "https://github.com/ChrisCrossCrash/react-chartjs-3/issues"
   },
   "keywords": [
     "chart",
     "chart-js",
     "chart.js",
     "react-chartjs-2",
+    "react-chartjs-3",
     "react chart.js",
     "react-chart.js"
   ],
