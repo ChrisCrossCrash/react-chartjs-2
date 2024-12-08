@@ -113,4 +113,4 @@ function ChartComponent<
   );
 }
 
-export const Chart = forwardRef(ChartComponent) as BaseChartComponent;
+export const Chart: BaseChartComponent = forwardRef(ChartComponent);
