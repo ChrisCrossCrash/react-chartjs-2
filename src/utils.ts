@@ -1,4 +1,4 @@
-import type { MouseEvent, ForwardedRef } from 'react';
+import type { MouseEvent, ForwardedRef } from 'react'
 import type {
   ChartType,
   ChartData,
@@ -6,15 +6,15 @@ import type {
   ChartDataset,
   ChartOptions,
   Chart,
-} from 'chart.js';
+} from 'chart.js'
 
-const defaultDatasetIdKey = 'label';
+const defaultDatasetIdKey = 'label'
 
 export function reforwardRef<T>(ref: ForwardedRef<T>, value: T) {
   if (typeof ref === 'function') {
-    ref(value);
+    ref(value)
   } else if (ref) {
-    ref.current = value;
+    ref.current = value
   }
 }
 
@@ -23,10 +23,10 @@ export function setOptions<
   TData = DefaultDataPoint<TType>,
   TLabel = unknown,
 >(chart: Chart<TType, TData, TLabel>, nextOptions: ChartOptions<TType>) {
-  const options = chart.options;
+  const options = chart.options
 
   if (options && nextOptions) {
-    Object.assign(options, nextOptions);
+    Object.assign(options, nextOptions)
   }
 }
 
@@ -36,9 +36,9 @@ export function setLabels<
   TLabel = unknown,
 >(
   currentData: ChartData<TType, TData, TLabel>,
-  nextLabels: TLabel[] | undefined
+  nextLabels: TLabel[] | undefined,
 ) {
-  currentData.labels = nextLabels;
+  currentData.labels = nextLabels
 }
 
 export function setDatasets<
@@ -48,17 +48,17 @@ export function setDatasets<
 >(
   currentData: ChartData<TType, TData, TLabel>,
   nextDatasets: ChartDataset<TType, TData>[],
-  datasetIdKey = defaultDatasetIdKey
+  datasetIdKey = defaultDatasetIdKey,
 ) {
-  const addedDatasets: ChartDataset<TType, TData>[] = [];
+  const addedDatasets: ChartDataset<TType, TData>[] = []
 
   currentData.datasets = nextDatasets.map(
     (nextDataset: Record<string, unknown>): ChartDataset<TType, TData> => {
       // given the new set, find it's current match
       const currentDataset = currentData.datasets.find(
         (dataset: Record<string, unknown>) =>
-          dataset[datasetIdKey] === nextDataset[datasetIdKey]
-      );
+          dataset[datasetIdKey] === nextDataset[datasetIdKey],
+      )
 
       // There is no original to update, so simply add new one
       if (
@@ -66,16 +66,16 @@ export function setDatasets<
         !nextDataset.data ||
         addedDatasets.includes(currentDataset)
       ) {
-        return { ...nextDataset };
+        return { ...nextDataset }
       }
 
-      addedDatasets.push(currentDataset);
+      addedDatasets.push(currentDataset)
 
-      Object.assign(currentDataset, nextDataset);
+      Object.assign(currentDataset, nextDataset)
 
-      return currentDataset;
-    }
-  );
+      return currentDataset
+    },
+  )
 }
 
 export function cloneData<
@@ -86,12 +86,12 @@ export function cloneData<
   const nextData: ChartData<TType, TData, TLabel> = {
     labels: [],
     datasets: [],
-  };
+  }
 
-  setLabels(nextData, data.labels);
-  setDatasets(nextData, data.datasets, datasetIdKey);
+  setLabels(nextData, data.labels)
+  setDatasets(nextData, data.datasets, datasetIdKey)
 
-  return nextData;
+  return nextData
 }
 
 /**
@@ -102,14 +102,14 @@ export function cloneData<
  */
 export function getDatasetAtEvent(
   chart: Chart,
-  event: MouseEvent<HTMLCanvasElement>
+  event: MouseEvent<HTMLCanvasElement>,
 ) {
   return chart.getElementsAtEventForMode(
     event.nativeEvent,
     'dataset',
     { intersect: true },
-    false
-  );
+    false,
+  )
 }
 
 /**
@@ -120,14 +120,14 @@ export function getDatasetAtEvent(
  */
 export function getElementAtEvent(
   chart: Chart,
-  event: MouseEvent<HTMLCanvasElement>
+  event: MouseEvent<HTMLCanvasElement>,
 ) {
   return chart.getElementsAtEventForMode(
     event.nativeEvent,
     'nearest',
     { intersect: true },
-    false
-  );
+    false,
+  )
 }
 
 /**
@@ -138,12 +138,12 @@ export function getElementAtEvent(
  */
 export function getElementsAtEvent(
   chart: Chart,
-  event: MouseEvent<HTMLCanvasElement>
+  event: MouseEvent<HTMLCanvasElement>,
 ) {
   return chart.getElementsAtEventForMode(
     event.nativeEvent,
     'index',
     { intersect: true },
-    false
-  );
+    false,
+  )
 }

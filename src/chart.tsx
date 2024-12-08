@@ -1,15 +1,15 @@
-import { useEffect, useRef, forwardRef, ForwardedRef } from 'react';
-import { Chart as ChartJS } from 'chart.js';
-import type { ChartType, DefaultDataPoint } from 'chart.js';
+import { useEffect, useRef, forwardRef, ForwardedRef } from 'react'
+import { Chart as ChartJS } from 'chart.js'
+import type { ChartType, DefaultDataPoint } from 'chart.js'
 
-import type { ChartProps, BaseChartComponent } from './types.js';
+import type { ChartProps, BaseChartComponent } from './types.js'
 import {
   reforwardRef,
   cloneData,
   setOptions,
   setLabels,
   setDatasets,
-} from './utils.js';
+} from './utils.js'
 
 function ChartComponent<
   TType extends ChartType = ChartType,
@@ -17,7 +17,7 @@ function ChartComponent<
   TLabel = unknown,
 >(
   props: ChartProps<TType, TData, TLabel>,
-  ref: ForwardedRef<ChartJS<TType, TData, TLabel>>
+  ref: ForwardedRef<ChartJS<TType, TData, TLabel>>,
 ) {
   const {
     height = 150,
@@ -31,74 +31,74 @@ function ChartComponent<
     fallbackContent,
     updateMode,
     ...canvasProps
-  } = props;
+  } = props
 
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null)
 
   const renderChart = () => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current) return
 
     chartRef.current = new ChartJS<TType, TData, TLabel>(canvasRef.current, {
       type,
       data: cloneData(data, datasetIdKey),
       options: options && { ...options },
       plugins,
-    });
+    })
 
-    reforwardRef(ref, chartRef.current);
-  };
+    reforwardRef(ref, chartRef.current)
+  }
 
   const destroyChart = () => {
-    reforwardRef(ref, null);
+    reforwardRef(ref, null)
 
     if (chartRef.current) {
-      chartRef.current.destroy();
-      chartRef.current = null;
+      chartRef.current.destroy()
+      chartRef.current = null
     }
-  };
+  }
 
   useEffect(() => {
     if (!redraw && chartRef.current && options) {
-      setOptions(chartRef.current, options);
+      setOptions(chartRef.current, options)
     }
-  }, [redraw, options]);
+  }, [redraw, options])
 
   useEffect(() => {
     if (!redraw && chartRef.current) {
-      setLabels(chartRef.current.config.data, data.labels);
+      setLabels(chartRef.current.config.data, data.labels)
     }
-  }, [redraw, data.labels]);
+  }, [redraw, data.labels])
 
   useEffect(() => {
     if (!redraw && chartRef.current && data.datasets) {
-      setDatasets(chartRef.current.config.data, data.datasets, datasetIdKey);
+      setDatasets(chartRef.current.config.data, data.datasets, datasetIdKey)
     }
-  }, [redraw, data.datasets]);
+  }, [redraw, data.datasets])
 
   useEffect(() => {
-    if (!chartRef.current) return;
+    if (!chartRef.current) return
 
     if (redraw) {
-      destroyChart();
-      setTimeout(renderChart);
+      destroyChart()
+      setTimeout(renderChart)
     } else {
-      chartRef.current.update(updateMode);
+      chartRef.current.update(updateMode)
     }
-  }, [redraw, options, data.labels, data.datasets, updateMode]);
+  }, [redraw, options, data.labels, data.datasets, updateMode])
 
   useEffect(() => {
-    if (!chartRef.current) return;
+    if (!chartRef.current) return
 
-    destroyChart();
-    setTimeout(renderChart);
-  }, [type]);
+    destroyChart()
+    setTimeout(renderChart)
+  }, [type])
 
   useEffect(() => {
-    renderChart();
+    renderChart()
 
-    return () => destroyChart();
-  }, []);
+    return () => destroyChart()
+  }, [])
 
   return (
     <canvas
@@ -110,7 +110,7 @@ function ChartComponent<
     >
       {fallbackContent}
     </canvas>
-  );
+  )
 }
 
-export const Chart: BaseChartComponent = forwardRef(ChartComponent);
+export const Chart: BaseChartComponent = forwardRef(ChartComponent)
