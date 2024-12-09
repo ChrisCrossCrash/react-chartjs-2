@@ -1,6 +1,5 @@
-import type { JSX, CanvasHTMLAttributes, ForwardedRef, ReactNode } from 'react'
+import type { CanvasHTMLAttributes, ReactNode } from 'react'
 import type {
-  Chart,
   ChartType,
   ChartData,
   ChartOptions,
@@ -57,22 +56,3 @@ export interface ChartProps<
    */
   updateMode?: UpdateMode
 }
-
-export type BaseChartComponent = <
-  TType extends ChartType = ChartType,
-  TData = DefaultDataPoint<TType>,
-  TLabel = unknown,
->(
-  props: ChartProps<TType, TData, TLabel> & {
-    ref?: ForwardedRef<Chart<TType, TData, TLabel> | null>
-  },
-) => JSX.Element
-
-export type TypedChartComponent<TDefaultType extends ChartType> = <
-  TData = DefaultDataPoint<TDefaultType>,
-  TLabel = unknown,
->(
-  props: Omit<ChartProps<TDefaultType, TData, TLabel>, 'type'> & {
-    ref?: ForwardedRef<Chart<TDefaultType, TData, TLabel> | null>
-  },
-) => JSX.Element

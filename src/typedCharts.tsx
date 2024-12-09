@@ -1,4 +1,3 @@
-import React, { forwardRef } from 'react'
 import {
   Chart as ChartJS,
   LineController,
@@ -12,7 +11,7 @@ import {
 } from 'chart.js'
 import type { ChartType, ChartComponentLike } from 'chart.js'
 
-import type { ChartProps, TypedChartComponent } from './types.js'
+import type { ChartProps } from './types.js'
 import { Chart } from './chart.js'
 
 function createTypedChart<T extends ChartType>(
@@ -21,9 +20,12 @@ function createTypedChart<T extends ChartType>(
 ) {
   ChartJS.register(registerables)
 
-  return forwardRef<ChartJS<T> | null, Omit<ChartProps<T>, 'type'>>(
-    (props, ref) => <Chart {...props} ref={ref} type={type} />,
-  ) as TypedChartComponent<T>
+  return (props: ChartProps) => {
+    // TODO: Configure ESLint to ignore unused variables named `_`.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { type: _, ...rest } = props
+    return <Chart type={type} {...rest} />
+  }
 }
 
 export const Line = /* #__PURE__ */ createTypedChart('line', LineController)
