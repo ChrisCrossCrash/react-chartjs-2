@@ -51,11 +51,12 @@ export function setDatasets<
   const addedDatasets: ChartDataset<TType, TData>[] = []
 
   currentData.datasets = nextDatasets.map(
-    (nextDataset: Record<string, unknown>): ChartDataset<TType, TData> => {
+    (nextDataset: ChartDataset<TType, TData>): ChartDataset<TType, TData> => {
       // given the new set, find it's current match
       const currentDataset = currentData.datasets.find(
-        (dataset: Record<string, unknown>) =>
-          dataset[datasetIdKey] === nextDataset[datasetIdKey],
+        (dataset: ChartDataset<TType, TData>) =>
+          dataset[datasetIdKey as keyof ChartDataset<TType, TData>] ===
+          nextDataset[datasetIdKey as keyof ChartDataset<TType, TData>],
       )
 
       // There is no original to update, so simply add new one
