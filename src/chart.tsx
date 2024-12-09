@@ -1,8 +1,8 @@
-import { useEffect, useRef, forwardRef, ForwardedRef } from 'react'
+import React, { useEffect, useRef, forwardRef } from 'react'
 import { Chart as ChartJS } from 'chart.js'
 import type { ChartType, DefaultDataPoint } from 'chart.js'
 
-import type { ChartProps } from './types.js'
+import type { ForwardedRef, ChartProps, BaseChartComponent } from './types.js'
 import {
   reforwardRef,
   cloneData,
@@ -23,23 +23,22 @@ function ChartComponent<
     height = 150,
     width = 300,
     redraw = false,
-    datasetIdKey = 'label',
+    datasetIdKey,
     type,
     data,
     options,
     plugins = [],
-    fallbackContent = null,
+    fallbackContent,
     updateMode,
     ...canvasProps
-  } = props
-
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const chartRef = useRef<ChartJS<TType, TData, TLabel> | null>(null)
+  } = props as ChartProps
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const chartRef = useRef<ChartJS | null>()
 
   const renderChart = () => {
     if (!canvasRef.current) return
 
-    chartRef.current = new ChartJS<TType, TData, TLabel>(canvasRef.current, {
+    chartRef.current = new ChartJS(canvasRef.current, {
       type,
       data: cloneData(data, datasetIdKey),
       options: options && { ...options },
@@ -113,4 +112,4 @@ function ChartComponent<
   )
 }
 
-export const Chart = forwardRef(ChartComponent)
+export const Chart = forwardRef(ChartComponent) as BaseChartComponent

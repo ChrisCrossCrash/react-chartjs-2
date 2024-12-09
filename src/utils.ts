@@ -1,4 +1,4 @@
-import type { MouseEvent, ForwardedRef } from 'react'
+import type { MouseEvent } from 'react'
 import type {
   ChartType,
   ChartData,
@@ -7,6 +7,10 @@ import type {
   ChartOptions,
   Chart,
 } from 'chart.js'
+
+import type { ForwardedRef } from './types.js'
+
+const defaultDatasetIdKey = 'label'
 
 export function reforwardRef<T>(ref: ForwardedRef<T>, value: T) {
   if (typeof ref === 'function') {
@@ -46,17 +50,16 @@ export function setDatasets<
 >(
   currentData: ChartData<TType, TData, TLabel>,
   nextDatasets: ChartDataset<TType, TData>[],
-  datasetIdKey: string,
+  datasetIdKey = defaultDatasetIdKey,
 ) {
   const addedDatasets: ChartDataset<TType, TData>[] = []
 
   currentData.datasets = nextDatasets.map(
-    (nextDataset: ChartDataset<TType, TData>): ChartDataset<TType, TData> => {
+    (nextDataset: Record<string, unknown>) => {
       // given the new set, find it's current match
       const currentDataset = currentData.datasets.find(
-        (dataset: ChartDataset<TType, TData>) =>
-          dataset[datasetIdKey as keyof ChartDataset<TType, TData>] ===
-          nextDataset[datasetIdKey as keyof ChartDataset<TType, TData>],
+        (dataset: Record<string, unknown>) =>
+          dataset[datasetIdKey] === nextDataset[datasetIdKey],
       )
 
       // There is no original to update, so simply add new one
@@ -65,7 +68,7 @@ export function setDatasets<
         !nextDataset.data ||
         addedDatasets.includes(currentDataset)
       ) {
-        return { ...nextDataset }
+        return { ...nextDataset } as ChartDataset<TType, TData>
       }
 
       addedDatasets.push(currentDataset)
@@ -81,7 +84,7 @@ export function cloneData<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown,
->(data: ChartData<TType, TData, TLabel>, datasetIdKey: string) {
+>(data: ChartData<TType, TData, TLabel>, datasetIdKey = defaultDatasetIdKey) {
   const nextData: ChartData<TType, TData, TLabel> = {
     labels: [],
     datasets: [],
