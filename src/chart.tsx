@@ -23,7 +23,7 @@ function ChartComponent<
     height = 150,
     width = 300,
     redraw = false,
-    datasetIdKey,
+    datasetIdKey = 'label',
     type,
     data,
     options,

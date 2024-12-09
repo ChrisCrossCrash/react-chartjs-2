@@ -8,8 +8,6 @@ import type {
   Chart,
 } from 'chart.js'
 
-const defaultDatasetIdKey = 'label'
-
 export function reforwardRef<T>(ref: ForwardedRef<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value)
@@ -48,7 +46,7 @@ export function setDatasets<
 >(
   currentData: ChartData<TType, TData, TLabel>,
   nextDatasets: ChartDataset<TType, TData>[],
-  datasetIdKey = defaultDatasetIdKey,
+  datasetIdKey: string,
 ) {
   const addedDatasets: ChartDataset<TType, TData>[] = []
 
@@ -82,7 +80,7 @@ export function cloneData<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
   TLabel = unknown,
->(data: ChartData<TType, TData, TLabel>, datasetIdKey = defaultDatasetIdKey) {
+>(data: ChartData<TType, TData, TLabel>, datasetIdKey: string) {
   const nextData: ChartData<TType, TData, TLabel> = {
     labels: [],
     datasets: [],
