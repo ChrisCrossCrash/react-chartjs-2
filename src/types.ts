@@ -26,7 +26,6 @@ export interface ChartProps<
   /**
    * The options object that is passed into the Chart.js chart
    * @see https://www.chartjs.org/docs/latest/general/options.html
-   * @default {}
    */
   options?: ChartOptions<TType>
   /**
