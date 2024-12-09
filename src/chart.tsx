@@ -28,7 +28,7 @@ function ChartComponent<
     data,
     options,
     plugins = [],
-    fallbackContent,
+    fallbackContent = null,
     updateMode,
     ...canvasProps
   } = props
