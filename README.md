@@ -1,7 +1,10 @@
 # react-chartjs-3
 
 > [!CAUTION]
-> The code in this repository does not work. It is a fork of [reactchartjs/react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2) that I made in an attempt to update the library for React 19, but so far I've been unsuccessful. Please feel free to fork this repository if you'd like to give it a shot yourself.
+> This is not an actively maintained fork of `react-chartjs-2`. However, it may be useful for anybody looking to maintain their own fork. This fork preserves the original `src/` directory while replacing everything else with an entirely new React TypeScript project. Also, it has React 19 as a peer dependency and builds without errors.
+> For more information, see:
+>
+> - https://github.com/reactchartjs/react-chartjs-2/issues/1235
 
 React components for <a href="https://www.chartjs.org">Chart.js</a>, the most popular charting library.
 
